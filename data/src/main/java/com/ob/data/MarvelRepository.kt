@@ -38,7 +38,7 @@ class MarvelRepositoryImplementation(
     }
 
 
-    suspend fun networkDataSourceSearchHeroes(): Flow<Either<Failure, List<Hero>>> {
+    private suspend fun networkDataSourceSearchHeroes(): Flow<Either<Failure, List<Hero>>> {
 
         remoteDataSource.getHeroes().flatMapToRight { heroes ->
             localDataSource.insertHeroes(heroes)
