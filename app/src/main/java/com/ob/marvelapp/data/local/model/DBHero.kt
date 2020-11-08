@@ -1,4 +1,4 @@
-package com.ob.marvelapp.data.local.db.model
+package com.ob.marvelapp.data.local.model
 
 import androidx.room.Entity
 import androidx.room.TypeConverters

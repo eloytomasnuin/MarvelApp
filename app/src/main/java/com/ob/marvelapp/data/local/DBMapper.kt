@@ -1,7 +1,7 @@
 package com.ob.marvelapp.data.local
 
 import com.ob.domain.Hero
-import com.ob.marvelapp.data.local.db.model.DBHero
+import com.ob.marvelapp.data.local.model.DBHero
 
 class DBMapper {
 

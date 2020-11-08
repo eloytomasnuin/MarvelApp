@@ -5,7 +5,6 @@ import com.ob.domain.Either
 import com.ob.domain.Failure
 import com.ob.domain.Hero
 import com.ob.marvelapp.data.local.DBMapper
-import com.ob.marvelapp.data.local.HeroDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
