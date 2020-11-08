@@ -1,6 +1,5 @@
 package com.ob.domain
 
-import com.ob.domain.DomainEntities.*
 import kotlinx.coroutines.flow.flow
 
 sealed class Either<out L, out R> {
@@ -47,4 +46,10 @@ suspend fun <T, L, R> Either<L, R>.mapToRight(fn: suspend (R) -> (T)): Either<L,
 
 fun <L, R> Either<L, R>.asFlow() = flow {
     emit(this@asFlow)
+}
+
+sealed class Failure {
+
+    abstract class CustomFailure : Failure()
+    object NullResult : CustomFailure()
 }
