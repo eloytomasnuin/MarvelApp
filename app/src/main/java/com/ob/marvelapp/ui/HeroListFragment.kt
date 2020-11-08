@@ -5,28 +5,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
-import com.ob.marvelapp.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ob.marvelapp.databinding.FragmentListHeroBinding
+import com.ob.marvelapp.ui.adapters.HeroListAdapter
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class HeroListFragment : Fragment() {
 
+    private lateinit var binding: FragmentListHeroBinding
+    private lateinit var adapter: HeroListAdapter
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        binding = FragmentListHeroBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        configureUI()
+    }
+
+    private fun configureUI() {
+        with(binding) {
+            adapter = HeroListAdapter()
+            val layoutManager = LinearLayoutManager(context)
+
+            binding.heroRecyclerView.layoutManager = layoutManager
+            binding.heroRecyclerView.adapter = adapter
         }
     }
 }
