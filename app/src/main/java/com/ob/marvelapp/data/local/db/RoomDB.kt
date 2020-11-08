@@ -6,6 +6,7 @@ import com.ob.domain.Failure
 import com.ob.domain.Hero
 import com.ob.marvelapp.data.local.DBMapper
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.mapLatest
@@ -17,6 +18,7 @@ class RoomDB(private val dbMapper: DBMapper, database: DataBase) : LocalDataSour
 
     object EmptyList : Failure.CustomFailure()
 
+    @ExperimentalCoroutinesApi
     override suspend fun getHeroes(): Flow<Either<Failure, List<Hero>>> {
         return withContext(Dispatchers.IO) {
             dao.getHeroes()
@@ -31,6 +33,7 @@ class RoomDB(private val dbMapper: DBMapper, database: DataBase) : LocalDataSour
         }
     }
 
+    @ExperimentalCoroutinesApi
     override suspend fun getHero(id: Int): Flow<Either<Failure, Hero>> {
         return withContext(Dispatchers.IO) {
             dao.getHero(id)

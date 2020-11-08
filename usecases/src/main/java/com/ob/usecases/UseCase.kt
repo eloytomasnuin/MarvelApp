@@ -1,7 +1,8 @@
 package com.ob.usecases
 
-import com.ob.domain.DomainEntities.Failure
+
 import com.ob.domain.Either
+import com.ob.domain.Failure
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 
