@@ -12,7 +12,7 @@ import com.ob.marvelapp.ui.Events.Event
 import com.ob.marvelapp.ui.UIMapper
 import com.ob.marvelapp.ui.model.UIHero
 import com.ob.usecases.GetHeroes
-import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,8 +22,7 @@ import javax.inject.Inject
 class HeroListViewModel @Inject constructor(
     private val getHeroes: GetHeroes,
     private val uiMapper: UIMapper,
-    var state: Parcelable?,
-    private val dispatcher: CoroutineDispatcher
+    var state: Parcelable?
 ) : ViewModel() {
 
     sealed class State {
@@ -52,7 +51,7 @@ class HeroListViewModel @Inject constructor(
 
     fun getHeroes(force: Boolean = false) {
         _heroesStateList.value = State.IsLoading(true)
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch(Dispatchers.Main) {
             getHeroes(GetHeroes.Params(force)).collect {
                 _heroesStateList.value = State.IsLoading(false)
                 it.fold(::handleFailure, ::handleResponse)
