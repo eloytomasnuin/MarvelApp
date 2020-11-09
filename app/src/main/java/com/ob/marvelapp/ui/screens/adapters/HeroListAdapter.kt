@@ -1,7 +1,8 @@
-package com.ob.marvelapp.ui.adapters
+package com.ob.marvelapp.ui.screens.adapters
 
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +11,7 @@ import com.ob.marvelapp.databinding.ItemHeroBinding
 import com.ob.marvelapp.extensions.loadImageUrl
 import com.ob.marvelapp.ui.model.UIHero
 
-class HeroListAdapter : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
+class HeroListAdapter(val onItemClickListener: OnItemClickListener) : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<UIHero>() {
 
         override fun areItemsTheSame(oldItem: UIHero, newItem: UIHero): Boolean {
@@ -41,7 +42,14 @@ class HeroListAdapter : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
         fun onBind(item: UIHero) {
             itemBinding.txtHeroName.text = item.name
             itemBinding.imgHero.loadImageUrl(item.thumbnail)
+            itemBinding.root.setOnClickListener{
+                onItemClickListener.onItemClick(item)
+            }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(uiHero: UIHero)
     }
 }
 

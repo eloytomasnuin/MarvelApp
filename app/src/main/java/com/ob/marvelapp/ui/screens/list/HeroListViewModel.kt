@@ -1,4 +1,4 @@
-package com.ob.marvelapp.ui.list
+package com.ob.marvelapp.ui.screens.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ob.domain.Failure
 import com.ob.domain.Hero
 import com.ob.marvelapp.di.PerFragment
+import com.ob.marvelapp.ui.Events.Event
 import com.ob.marvelapp.ui.UIMapper
 import com.ob.marvelapp.ui.model.UIHero
 import com.ob.usecases.GetHeroes
@@ -28,10 +29,23 @@ class HeroListViewModel @Inject constructor(
         class IsLoading(val isLoading: Boolean) : State()
     }
 
+    sealed class NavigationEvent {
+        class ToHeroDetail(val arg: Int) : NavigationEvent()
+    }
+
     private var _heroesStateList = MutableLiveData<State>()
+    private val _navigation = MutableLiveData<Event<NavigationEvent>>()
 
     val heroesStateList: LiveData<State>
         get() = _heroesStateList
+
+    val navigation: LiveData<Event<NavigationEvent>>
+        get() = _navigation
+
+
+    fun navigateToDetail(navEvent: NavigationEvent) {
+        _navigation.value = Event(navEvent)
+    }
 
     fun getHeroes(force: Boolean = false) {
         _heroesStateList.value = State.IsLoading(true)

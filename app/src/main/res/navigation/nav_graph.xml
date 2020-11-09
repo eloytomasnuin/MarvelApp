@@ -3,26 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HeroList">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.ob.marvelapp.ui.list.HeroListFragment"
+        android:id="@+id/HeroList"
+        android:name="com.ob.marvelapp.ui.screens.list.HeroListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_list_hero">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_to_detail"
+            app:destination="@id/HeroDetail" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.ob.marvelapp.ui.HeroDetailFragment"
+        android:id="@+id/HeroDetail"
+        android:name="com.ob.marvelapp.ui.screens.detail.HeroDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_detail_hero">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_back"
+            app:destination="@id/HeroList" />
+        <argument
+            android:name="heroId"
+            app:argType="integer" />
     </fragment>
 </navigation>
