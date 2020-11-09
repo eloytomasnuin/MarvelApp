@@ -1,9 +1,9 @@
 package com.ob.usecases
 
 import com.ob.data.MarvelRepository
-import com.ob.domain.DomainEntities.Failure
-import com.ob.domain.DomainEntities.Hero
 import com.ob.domain.Either
+import com.ob.domain.Failure
+import com.ob.domain.Hero
 import kotlinx.coroutines.flow.Flow
 
 class GetHeroById(private val marvelRepository: MarvelRepository) :
