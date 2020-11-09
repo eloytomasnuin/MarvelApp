@@ -24,7 +24,7 @@ class GetHeroByIdTest {
     }
 
     @Test
-    fun useCaseCallRepositoryWhenIsCalled(){
+    fun useCaseCallRepositoryWhenIsCalled() {
 
         runBlocking {
             useCase(GetHeroById.Params(1))

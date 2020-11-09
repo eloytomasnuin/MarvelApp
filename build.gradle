@@ -26,42 +26,42 @@ buildscript {
 
 
         kotlin = [
-                kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+                kotlin    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
                 coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
         ]
 
         material = [
-               material: "com.google.android.material:material:$material_version"
+                material: "com.google.android.material:material:$material_version"
         ]
 
         jetpack = [
                 //core
-                ktx: "androidx.core:core-ktx:$ktx_core_version",
+                ktx                 : "androidx.core:core-ktx:$ktx_core_version",
 
                 //navigation
-                navigation_fragment: "androidx.navigation:navigation-fragment-ktx:$navigation_version",
-                navigation_ui: "androidx.navigation:navigation-ui-ktx:$navigation_version",
-                navigation_dynamic: "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version",
+                navigation_fragment : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+                navigation_ui       : "androidx.navigation:navigation-ui-ktx:$navigation_version",
+                navigation_dynamic  : "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version",
 
                 //room
-                room: "androidx.room:room-runtime:$room_version",
-                room_ktx: "androidx.room:room-ktx:$room_version",
+                room                : "androidx.room:room-runtime:$room_version",
+                room_ktx            : "androidx.room:room-ktx:$room_version",
 
                 //livedata
-                viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
-                livedata: "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
-                runtime: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+                viewmodel           : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+                livedata            : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+                runtime             : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
                 lifecycle_extensions: "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
 
                 //components
-                constraint: "androidx.constraintlayout:constraintlayout:$constraint_version",
+                constraint          : "androidx.constraintlayout:constraintlayout:$constraint_version",
         ]
 
         third_parties = [
-                retrofit: "com.squareup.retrofit2:retrofit:$retrofit_version",
+                retrofit       : "com.squareup.retrofit2:retrofit:$retrofit_version",
                 retrofit_scalar: "com.squareup.retrofit2:converter-scalars:$retrofit_version",
-                glide: "com.github.bumptech.glide:glide:$glide_version",
-                moshi: "com.squareup.moshi:moshi-kotlin:$moshi_version"
+                glide          : "com.github.bumptech.glide:glide:$glide_version",
+                moshi          : "com.squareup.moshi:moshi-kotlin:$moshi_version"
         ]
 
         kapt_compiler = [
@@ -72,12 +72,12 @@ buildscript {
         ]
 
         dependency_injection = [
-                dagger : "com.google.dagger:dagger:$dagger_version"
+                dagger: "com.google.dagger:dagger:$dagger_version"
         ]
 
         test = [
-                junit: "junit:junit:$junit_version",
-                junit_ext: "androidx.test.ext:junit:$junit_ext_version",
+                junit         : "junit:junit:$junit_version",
+                junit_ext     : "androidx.test.ext:junit:$junit_ext_version",
                 mockito_kotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version",
                 mockito_inline: "org.mockito:mockito-inline:$mockito_inline_version"
         ]
