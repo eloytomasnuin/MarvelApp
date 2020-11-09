@@ -18,7 +18,6 @@ import com.ob.marvelapp.ui.Events.EventObserver
 import com.ob.marvelapp.ui.model.UIHero
 import com.ob.marvelapp.ui.screens.adapters.HeroListAdapter
 import com.ob.marvelapp.ui.screens.list.HeroListViewModel.NavigationEvent
-import com.ob.marvelapp.ui.screens.list.di.HeroListSubComponent
 import javax.inject.Inject
 
 /**
@@ -29,18 +28,17 @@ class HeroListFragment : Fragment() {
     @Inject
     lateinit var viewModel: HeroListViewModel
 
-    private lateinit var subComponent: HeroListSubComponent
     private lateinit var binding: FragmentListHeroBinding
     private lateinit var adapter: HeroListAdapter
+    private lateinit var layoutManager: LinearLayoutManager
 
     private var state: Parcelable? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        subComponent = application.component.heroListSubComponent.create(state)
+        val subComponent = application.component.heroListSubComponent.create(state)
         subComponent.inject(this)
-
     }
 
     override fun onCreateView(
@@ -58,6 +56,11 @@ class HeroListFragment : Fragment() {
         setupView()
         configureStates()
         prepareForEvents()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.state = layoutManager.onSaveInstanceState()
     }
 
     private fun configureStates() {
@@ -95,9 +98,10 @@ class HeroListFragment : Fragment() {
                 viewModel.navigateToDetail(NavigationEvent.ToHeroDetail(uiHero.id))
             }
         })
-        val layoutManager = LinearLayoutManager(context)
-
+        layoutManager = LinearLayoutManager(context)
         binding.heroRecyclerView.layoutManager = layoutManager
         binding.heroRecyclerView.adapter = adapter
+
+        viewModel.state?.let { layoutManager.onRestoreInstanceState(it) }
     }
 }

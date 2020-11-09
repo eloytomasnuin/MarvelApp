@@ -13,7 +13,6 @@ import com.ob.marvelapp.extensions.application
 import com.ob.marvelapp.extensions.loadImageUrl
 import com.ob.marvelapp.ui.model.UIHero
 import com.ob.marvelapp.ui.screens.adapters.HeroDetailListAdapter
-import com.ob.marvelapp.ui.screens.detail.di.HeroDetailSubComponent
 import javax.inject.Inject
 
 /**
@@ -22,10 +21,6 @@ import javax.inject.Inject
 class HeroDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailHeroBinding
-    private lateinit var subComponent: HeroDetailSubComponent
-    private val args: HeroDetailFragmentArgs by navArgs()
-    private lateinit var storiesAdapter: HeroDetailListAdapter
-    private lateinit var comicsAdapter: HeroDetailListAdapter
 
     @Inject
     lateinit var viewModel: HeroDetailViewModel
@@ -33,7 +28,7 @@ class HeroDetailFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        subComponent = application.component.heroDetailSubComponent.create()
+        val subComponent = application.component.heroDetailSubComponent.create()
         subComponent.inject(this)
     }
 
@@ -46,9 +41,8 @@ class HeroDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         configureStates()
-
+        val args: HeroDetailFragmentArgs by navArgs()
         viewModel.getHero(args.heroId)
     }
 
@@ -66,9 +60,8 @@ class HeroDetailFragment : Fragment() {
 
     private fun setupView(hero: UIHero) {
         with(binding) {
-            storiesAdapter = HeroDetailListAdapter()
-            comicsAdapter = HeroDetailListAdapter()
-
+            val storiesAdapter = HeroDetailListAdapter()
+            val comicsAdapter = HeroDetailListAdapter()
             imgHero.loadImageUrl(hero.thumbnail)
             txtHeroName.text = hero.name
             txtHeroDescription.text = hero.description

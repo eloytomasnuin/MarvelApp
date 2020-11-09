@@ -16,10 +16,11 @@ class DBMapper {
             Hero(
                 id = id,
                 name = name,
-                description =  description,
+                description = description,
                 thumbnail = thumbnail,
                 comics = comics,
-                stories = stories)
+                stories = stories
+            )
         }
     }
 
@@ -34,9 +35,10 @@ class DBMapper {
             DBHero(
                 id = id,
                 name = name,
-                description =  description,
+                description = description,
                 thumbnail = thumbnail,
                 comics = comics,
-                stories = stories)
+                stories = stories
+            )
         }
 }

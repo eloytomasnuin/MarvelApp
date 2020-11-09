@@ -1,5 +1,6 @@
 package com.ob.marvelapp.ui.screens.list
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +22,9 @@ import javax.inject.Inject
 class HeroListViewModel @Inject constructor(
     private val getHeroes: GetHeroes,
     private val uiMapper: UIMapper,
-    private val dispatcher: CoroutineDispatcher): ViewModel() {
+    var state: Parcelable?,
+    private val dispatcher: CoroutineDispatcher
+) : ViewModel() {
 
     sealed class State {
         class Error(val failure: Failure) : State()

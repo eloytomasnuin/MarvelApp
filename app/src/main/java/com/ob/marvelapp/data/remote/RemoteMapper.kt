@@ -10,11 +10,11 @@ class RemoteMapper {
     fun convertEntityHeroToDomain(entityHero: EntityHero): Either<Failure, Hero> =
         Either.Right(with(entityHero) {
             Hero(
-             id  = id,
-             name = name,
-             description= description,
-             thumbnail = thumbnail.path + "." + thumbnail.extension,
-             comics = comics.items.map { it.name },
-             stories =  stories.items.map { it.name })
+                id = id,
+                name = name,
+                description = description,
+                thumbnail = thumbnail.path + "." + thumbnail.extension,
+                comics = comics.items.map { it.name },
+                stories = stories.items.map { it.name })
         })
 }

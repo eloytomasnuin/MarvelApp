@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ob.marvelapp.databinding.ItemHeroDetailBinding
 import com.ob.marvelapp.ui.screens.adapters.HeroDetailListAdapter.ViewHolder
 
-class HeroDetailListAdapter() : ListAdapter<String, ViewHolder>(
+class HeroDetailListAdapter : ListAdapter<String, ViewHolder>(
     object : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem

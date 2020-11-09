@@ -5,9 +5,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.ob.marvelapp.MarvelApplication
-import com.ob.marvelapp.R
-import java.math.BigInteger
-import java.security.MessageDigest
 
 val Fragment.application: MarvelApplication
     get() = (requireActivity().application as MarvelApplication)
