@@ -20,7 +20,7 @@ class RetrofitService(
     NetworkManager by NetworkManager.NetworkImplementation() {
 
     object ConnectionError : Failure.CustomFailure()
-    object ParsingError: Failure.CustomFailure()
+    object ParsingError : Failure.CustomFailure()
 
     override suspend fun getHeroes(
         timeStamp: String,

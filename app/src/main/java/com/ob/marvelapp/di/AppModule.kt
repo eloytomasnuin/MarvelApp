@@ -34,7 +34,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideDispatcher() : CoroutineDispatcher = Dispatchers.Main
+    fun provideDispatcher(): CoroutineDispatcher = Dispatchers.Main
 
     @Singleton
     @Named("base_url")

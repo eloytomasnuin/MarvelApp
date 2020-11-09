@@ -1,8 +1,8 @@
-package com.ob.marvelapp.ui.list.di
+package com.ob.marvelapp.ui.screens.list.di
 
 import android.os.Parcelable
 import com.ob.marvelapp.di.PerFragment
-import com.ob.marvelapp.ui.list.HeroListFragment
+import com.ob.marvelapp.ui.screens.list.HeroListFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 

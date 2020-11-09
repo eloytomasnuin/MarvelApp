@@ -1,4 +1,4 @@
-package com.ob.marvelapp.ui.adapters
+package com.ob.marvelapp.ui.screens.adapters
 
 
 import android.view.LayoutInflater
@@ -10,18 +10,19 @@ import com.ob.marvelapp.databinding.ItemHeroBinding
 import com.ob.marvelapp.extensions.loadImageUrl
 import com.ob.marvelapp.ui.model.UIHero
 
-class HeroListAdapter : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
-    object : DiffUtil.ItemCallback<UIHero>() {
+class HeroListAdapter(val onItemClickListener: OnItemClickListener) :
+    ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
+        object : DiffUtil.ItemCallback<UIHero>() {
 
-        override fun areItemsTheSame(oldItem: UIHero, newItem: UIHero): Boolean {
-            return oldItem.id == newItem.id
-        }
+            override fun areItemsTheSame(oldItem: UIHero, newItem: UIHero): Boolean {
+                return oldItem.id == newItem.id
+            }
 
-        override fun areContentsTheSame(oldItem: UIHero, newItem: UIHero): Boolean {
-            return oldItem == newItem
-        }
+            override fun areContentsTheSame(oldItem: UIHero, newItem: UIHero): Boolean {
+                return oldItem == newItem
+            }
 
-    }) {
+        }) {
 
     private lateinit var binding: ItemHeroBinding
 
@@ -41,7 +42,14 @@ class HeroListAdapter : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
         fun onBind(item: UIHero) {
             itemBinding.txtHeroName.text = item.name
             itemBinding.imgHero.loadImageUrl(item.thumbnail)
+            itemBinding.root.setOnClickListener {
+                onItemClickListener.onItemClick(item)
+            }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(uiHero: UIHero)
     }
 }
 
