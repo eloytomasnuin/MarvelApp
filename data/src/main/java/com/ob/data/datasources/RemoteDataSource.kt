@@ -7,5 +7,7 @@ import com.ob.domain.Failure
 import com.ob.domain.Hero
 
 interface RemoteDataSource {
-    suspend fun getHeroes(): Either<Failure, List<Hero>>
+    suspend fun getHeroes(timeStamp: String,
+                          apiKey: String,
+                          hash: String): Either<Failure, List<Hero>>
 }

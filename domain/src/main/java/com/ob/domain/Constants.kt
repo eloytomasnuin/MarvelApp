@@ -1,14 +1,14 @@
 package com.ob.domain
 
-object Constants{
+object Constants {
 
     object Server {
+        const val PRIVATE_KEY = "3e1e37a6f0bdbb15cec8dc4d369028fd3a633252"
         const val API_KEY = "ff1bbafd775a6d0209d677f348c22d6b"
         const val BASE_URL = "https://gateway.marvel.com:443/v1/public/"
-        const val LIMIT = "20"
 
         object Hero {
-            const val GET_HEROES = "characters?limit=$LIMIT&apikey=$API_KEY"
+            const val GET_HEROES = "characters"
         }
 
         object OkHTTPConfig {

@@ -13,7 +13,7 @@ class RemoteMapper {
              id  = id,
              name = name,
              description= description,
-             thumbnail = thumbnail.path,
+             thumbnail = thumbnail.path + "." + thumbnail.extension,
              comics = comics.items.map { it.name },
              stories =  stories.items.map { it.name })
         })

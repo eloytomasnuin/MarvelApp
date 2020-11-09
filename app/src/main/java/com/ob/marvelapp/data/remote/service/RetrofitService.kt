@@ -8,6 +8,8 @@ import com.ob.marvelapp.data.remote.JsonMapper
 import com.ob.marvelapp.data.remote.RemoteMapper
 import com.ob.marvelapp.data.remote.manager.ConnectionManager
 import com.ob.marvelapp.data.remote.manager.NetworkManager
+import org.json.JSONException
+import org.json.JSONObject
 
 class RetrofitService(
     private val retrofit: ApiService,
@@ -18,19 +20,31 @@ class RetrofitService(
     NetworkManager by NetworkManager.NetworkImplementation() {
 
     object ConnectionError : Failure.CustomFailure()
+    object ParsingError: Failure.CustomFailure()
 
-    override suspend fun getHeroes(): Either<Failure, List<Hero>> =
-        when (connectivityManager.isConnected()) {
-
-            true -> safeRequest(retrofit.getHeroes()) { listBeers ->
-                jsonMapper.getArray(listBeers.b) { jsonArray ->
-                    convertJsonToHeroes(jsonArray) { entity ->
-                        serverMapper.convertEntityHeroToDomain(entity)
+    override suspend fun getHeroes(
+        timeStamp: String,
+        apiKey: String,
+        hash: String
+    ): Either<Failure, List<Hero>> {
+        return when (connectivityManager.isConnected()) {
+            true -> safeRequest(retrofit.getHeroes(timeStamp, apiKey, hash)) { listHero ->
+                try {
+                    val results = JSONObject(listHero.b)
+                        .getJSONObject("data")
+                        .getJSONArray("results")
+                        .toString()
+                    jsonMapper.getArray(results) { jsonArray ->
+                        convertJsonToHeroes(jsonArray) { entity ->
+                            serverMapper.convertEntityHeroToDomain(entity)
+                        }
                     }
+                } catch (e: JSONException) {
+                    Either.Left(ParsingError)
                 }
             }
 
             false -> Either.Left(ConnectionError)
         }
-
+    }
 }

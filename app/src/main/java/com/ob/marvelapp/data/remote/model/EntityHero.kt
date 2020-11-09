@@ -1,5 +1,8 @@
 package com.ob.marvelapp.data.remote.model
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class EntityHero (
     val id : Int,
     val name : String,
@@ -14,11 +17,13 @@ data class EntityHero (
     val urls : List<Urls>
 )
 
+@JsonClass(generateAdapter = true)
 data class Thumbnail (
     val path : String,
     val extension : String
 )
 
+@JsonClass(generateAdapter = true)
 data class Comics (
     val available : Int,
     val collectionURI : String,
@@ -26,6 +31,7 @@ data class Comics (
     val returned : Int
 )
 
+@JsonClass(generateAdapter = true)
 data class Series (
     val available : Int,
     val collectionURI : String,
@@ -33,6 +39,7 @@ data class Series (
     val returned : Int
 )
 
+@JsonClass(generateAdapter = true)
 data class Stories (
     val available : Int,
     val collectionURI : String,
@@ -40,6 +47,7 @@ data class Stories (
     val returned : Int
 )
 
+@JsonClass(generateAdapter = true)
 data class Events (
     val available : Int,
     val collectionURI : String,
@@ -47,11 +55,13 @@ data class Events (
     val returned : Int
 )
 
+@JsonClass(generateAdapter = true)
 data class Urls (
     val type : String,
     val url : String
 )
 
+@JsonClass(generateAdapter = true)
 data class Items (
     val resourceURI : String,
     val name : String
