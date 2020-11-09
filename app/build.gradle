@@ -45,6 +45,7 @@ dependencies {
     def dependencyInjection = rootProject.ext.dependency_injection
     def jetpack = rootProject.ext.jetpack
     def thirdParties = rootProject.ext.third_parties
+    def kaptCompiler = rootProject.ext.kapt_compiler
 
 
     implementation kotlin.values()
@@ -52,6 +53,7 @@ dependencies {
     implementation jetpack.values()
     implementation dependencyInjection.values()
     implementation thirdParties.values()
+    kapt kaptCompiler.values()
 
     def test = rootProject.ext.test
     def androidTest = rootProject.ext.android_test

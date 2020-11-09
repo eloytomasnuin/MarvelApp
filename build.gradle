@@ -52,14 +52,22 @@ buildscript {
                 runtime: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
                 lifecycle_extensions: "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
 
-                //constraint layout
+                //components
                 constraint: "androidx.constraintlayout:constraintlayout:$constraint_version",
         ]
 
         third_parties = [
                 retrofit: "com.squareup.retrofit2:retrofit:$retrofit_version",
+                retrofit_scalar: "com.squareup.retrofit2:converter-scalars:$retrofit_version",
                 glide: "com.github.bumptech.glide:glide:$glide_version",
                 moshi: "com.squareup.moshi:moshi-kotlin:$moshi_version"
+        ]
+
+        kapt_compiler = [
+                dagger_compiler: "com.google.dagger:dagger-compiler:$dagger_version",
+                glide_compiler : "com.github.bumptech.glide:compiler:$glide_version",
+                room_compiler  : "androidx.room:room-compiler:$room_version",
+                moshi_compiler : "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version",
         ]
 
         dependency_injection = [
