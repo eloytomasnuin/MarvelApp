@@ -9,6 +9,11 @@ java {
 }
 
 dependencies {
+
+    def testGradle = rootProject.ext.test
     def kotlinGradle = rootProject.ext.kotlin
+
     implementation kotlinGradle.values()
+
+    testImplementation testGradle.values()
 }
