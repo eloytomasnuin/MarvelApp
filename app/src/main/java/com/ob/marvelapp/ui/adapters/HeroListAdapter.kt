@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ob.marvelapp.databinding.ItemHeroBinding
+import com.ob.marvelapp.extensions.loadImageUrl
 import com.ob.marvelapp.ui.model.UIHero
 
 class HeroListAdapter : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
@@ -37,8 +38,9 @@ class HeroListAdapter : ListAdapter<UIHero, HeroListAdapter.ViewHolder>(
         RecyclerView.ViewHolder(itemBinding.root) {
 
 
-        fun onBind(item: UIHero) = with(itemBinding) {
-
+        fun onBind(item: UIHero) {
+            itemBinding.txtHeroName.text = item.name
+            itemBinding.imgHero.loadImageUrl(item.thumbnail)
         }
     }
 }
