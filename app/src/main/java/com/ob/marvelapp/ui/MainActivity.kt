@@ -1,11 +1,8 @@
-package com.ob.marvelapp
+package com.ob.marvelapp.ui
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import com.ob.marvelapp.R
 
 class MainActivity : AppCompatActivity() {
 
