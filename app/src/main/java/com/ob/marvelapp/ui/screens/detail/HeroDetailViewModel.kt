@@ -19,8 +19,6 @@ class HeroDetailViewModel @Inject constructor(
     private val uiMapper: UIMapper
 ) : ViewModel() {
 
-    private lateinit var uiHero: UIHero
-
     sealed class HeroDetailState {
         class Error(val failure: Failure) : HeroDetailState()
         class ShowItem(val item: UIHero) : HeroDetailState()

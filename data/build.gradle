@@ -10,8 +10,10 @@ java {
 
 dependencies {
     def kotlinGradle = rootProject.ext.kotlin
+    def testGradle = rootProject.ext.test
 
     implementation project(":domain")
-
     implementation kotlinGradle.values()
+
+    testImplementation testGradle.values()
 }

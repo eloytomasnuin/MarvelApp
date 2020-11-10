@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.flow
 sealed class Either<out L, out R> {
     /** * Represents the left side of [Either] class which by convention is a "Failure". */
     data class Left<out L>(val a: L) : Either<L, Nothing>()
+
     /** * Represents the right side of [Either] class which by convention is a "Success". */
     data class Right<out R>(val b: R) : Either<Nothing, R>()
 
@@ -27,14 +28,14 @@ suspend fun <A, B, C> (suspend (A) -> B).c(f: suspend (B) -> C): suspend (A) -> 
 
 suspend fun <T, L, R> Either<L, R>.flatMapToRight(fn: suspend (R) -> Either<L, T>): Either<L, T> =
     when (this) {
-        is Either.Left ->{
+        is Either.Left -> {
             Either.Left(a)
         }
         is Either.Right -> fn(b)
     }
 
-suspend fun <T: Failure, L, R> Either<L, R>.flatMapToLeft(fn: suspend (L) -> Either<T, R>) : Either<T, R> =
-    when(this){
+suspend fun <T : Failure, L, R> Either<L, R>.flatMapToLeft(fn: suspend (L) -> Either<T, R>): Either<T, R> =
+    when (this) {
         is Either.Left -> fn(a)
 
         is Either.Right -> {
@@ -42,7 +43,8 @@ suspend fun <T: Failure, L, R> Either<L, R>.flatMapToLeft(fn: suspend (L) -> Eit
         }
     }
 
-suspend fun <T, L, R> Either<L, R>.mapToRight(fn: suspend (R) -> (T)): Either<L, T> = this.flatMapToRight(fn.c(::right))
+suspend fun <T, L, R> Either<L, R>.mapToRight(fn: suspend (R) -> (T)): Either<L, T> =
+    this.flatMapToRight(fn.c(::right))
 
 fun <L, R> Either<L, R>.asFlow() = flow {
     emit(this@asFlow)

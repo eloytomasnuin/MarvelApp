@@ -6,7 +6,7 @@ import com.ob.domain.Failure
 import com.ob.domain.Hero
 import kotlinx.coroutines.flow.Flow
 
-class GetHeroes(private val marvelRepository: MarvelRepository):
+class GetHeroes(private val marvelRepository: MarvelRepository) :
     UseCase<GetHeroes.Params, List<Hero>>() {
 
     override suspend fun execute(params: Params): Flow<Either<Failure, List<Hero>>> =

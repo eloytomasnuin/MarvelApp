@@ -31,7 +31,6 @@ class MarvelRepositoryImplementation(
         val timeStampString = (System.currentTimeMillis() / 1000L).toString()
         val hash = Utils.md5(timeStampString + PRIVATE_KEY + API_KEY)
 
-
         return when (fromNetwork) {
             true -> networkDataSourceSearchHeroes(timeStampString, apiKey, hash)
             false -> localDataSource.getHeroes()

@@ -20,8 +20,6 @@ import com.ob.marvelapp.ui.UIMapper
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -31,10 +29,6 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
-
-    @Singleton
-    @Provides
-    fun provideDispatcher(): CoroutineDispatcher = Dispatchers.Main
 
     @Singleton
     @Named("base_url")
