@@ -4,10 +4,10 @@
 
 ## Modules
 
-**APP** (The main module)
-**DOMAIN** (Domain classes)
-**DATA** (Repositories local and remote)
-**USE CASES** (Use cases of application)
+- **APP** (The main module)
+- **DOMAIN** (Domain classes)
+- **DATA** (Repositories local and remote)
+- **USE CASES** (Use cases of application)
 
 ## Features
 
