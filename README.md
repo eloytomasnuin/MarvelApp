@@ -18,7 +18,7 @@
 - Navigation 
 - Coroutines
 
-## Posible Improvements
+## Possible Improvements
 
 - Implement pagination
 - Load more details in Hero detail page
