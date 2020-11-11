@@ -28,4 +28,4 @@
 
 ## Functionality
 
-The application starts with a 20 heroes list bring them from the Marvel Api, shows their photos, and name. If you want to know about one of them, click in one an shows more detail: descriptions, comics and histories where the appear.
+The application starts with a 20 heroes list bring them from the Marvel Api, shows their photos, and name. If you want to know about one of them, click in one an shows more detail: descriptions, comics and histories where they appear.
